@@ -7,6 +7,15 @@
 
 #define ALPHABET "=BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
+int findLowestMultiple(int n, int multiple){
+  
+  int correct = n;
+  while(correct %multiple != 0){
+    correct--;
+  }
+  return correct;
+}
+
 int findIndex(char c){
   size_t walk = 0;
   while(walk < strlen(ALPHABET)){
@@ -90,7 +99,7 @@ int main(int argc, char** argv){
     unsigned char bitToRead = 0x20;
     unsigned char bitToInsert = 0x80;
     size_t shift_amount = 5;
-    puts("");
+    size_t closestMultiple = findLowestMultiple(strlen(inputString)*6,8);
     while(1){
       unsigned char next_bit = ( next_char & bitToRead ) >> shift_amount;
       bitToRead = bitToRead >> 1;
@@ -120,7 +129,7 @@ int main(int argc, char** argv){
        bitToInsert = 0x80;
        num_bits = 0;
       }
-      if(i >= strlen(inputString) - 1){
+      if(i >= closestMultiple/8){
         break;
       }
     }

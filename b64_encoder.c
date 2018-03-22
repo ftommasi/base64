@@ -56,7 +56,6 @@ int main(int argc, char** argv){
     unsigned char current = inputString[i];
 
     //print_bits(len,inputString);
-    puts("");
     while(1){
       unsigned char next_bit = ( current & 0x80 ) >> 7;
       next_pair = next_pair << 1;
